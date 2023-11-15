@@ -18,7 +18,7 @@ public class Currency : MonoBehaviour
         money = 10;
     }
 
-    public static string DisplayCurrency(int money)
+    public string DisplayCurrency(int money)
     {
         int moneyLenght = money.ToString().Length;
         switch (moneyLenght)

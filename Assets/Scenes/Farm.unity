@@ -343,7 +343,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1450975157}
-        m_TargetAssemblyTypeName: Shop_UI, Assembly-CSharp
+        m_TargetAssemblyTypeName: Shop.ShopLogic, Assembly-CSharp
         m_MethodName: SubtractFlower
         m_Mode: 1
         m_Arguments:
@@ -554,8 +554,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1450975157}
-        m_TargetAssemblyTypeName: Shop_UI, Assembly-CSharp
+      - m_Target: {fileID: 1450975158}
+        m_TargetAssemblyTypeName: Shop.Shop_UI, Assembly-CSharp
         m_MethodName: ToggleRose
         m_Mode: 1
         m_Arguments:
@@ -1123,7 +1123,7 @@ GameObject:
   - component: {fileID: 246742949}
   m_Layer: 0
   m_Name: Currency
-  m_TagString: Untagged
+  m_TagString: Currency
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1155,7 +1155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9407b96d150bcc4aa73bdd8fce7d32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
+  money: 10
   moneyText: {fileID: 1473353328}
 --- !u!1 &259422732
 GameObject:
@@ -1871,8 +1871,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1450975157}
-        m_TargetAssemblyTypeName: Shop_UI, Assembly-CSharp
+      - m_Target: {fileID: 1450975158}
+        m_TargetAssemblyTypeName: Shop.Shop_UI, Assembly-CSharp
         m_MethodName: ToggleDaisy
         m_Mode: 1
         m_Arguments:
@@ -7266,19 +7266,29 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 895, y: 484, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 178
+  - m_RefCount: 179
     m_Data: {fileID: 11400000, guid: db0a9138863a073419b2bad60f8837ae, type: 2}
   - m_RefCount: 334
     m_Data: {fileID: 11400000, guid: 6d1a5a98e5ecbad4282dff4c38136f8e, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 178
+  - m_RefCount: 179
     m_Data: {fileID: 150908835, guid: 857319944ef447e4ba221c2773102a83, type: 3}
   - m_RefCount: 334
     m_Data: {fileID: 327905707, guid: 857319944ef447e4ba221c2773102a83, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 512
+  - m_RefCount: 513
     m_Data:
       e00: 1
       e01: 0
@@ -7297,13 +7307,13 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 512
+  - m_RefCount: 513
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -16, y: -8, z: 0}
-  m_Size: {x: 32, y: 18, z: 1}
+  m_Size: {x: 912, y: 493, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -7747,7 +7757,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 685274633}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1450975157}
+        m_TargetAssemblyTypeName: Shop.ShopLogic, Assembly-CSharp
+        m_MethodName: Buy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &685274633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10489,10 +10511,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1450975156}
+  - component: {fileID: 1450975158}
   - component: {fileID: 1450975157}
   m_Layer: 5
   m_Name: Shop
-  m_TagString: Untagged
+  m_TagString: Shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10527,17 +10550,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1450975155}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6942fb7fb81065419664fa9a53d28fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quantity: 0
+  quantityText: {fileID: 1256860033}
+  totalAmount: 0
+  totalAmountText: {fileID: 1193227385}
+  ShowDaisy: {fileID: 684800185}
+  ShowRose: {fileID: 964301032}
+--- !u!114 &1450975158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450975155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2ea89f2338ffab4b823bab2d8fd5fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShopPanel: {fileID: 1718198752}
   ShowDaisy: {fileID: 684800185}
   ShowRose: {fileID: 964301032}
-  quantityText: {fileID: 1256860033}
-  quantity: 0
-  totalAmountText: {fileID: 1193227385}
-  totalAmount: 0
-  currency: {fileID: 0}
 --- !u!1 &1469493398
 GameObject:
   m_ObjectHideFlags: 0
@@ -11308,7 +11344,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1450975157}
-        m_TargetAssemblyTypeName: Shop_UI, Assembly-CSharp
+        m_TargetAssemblyTypeName: Shop.ShopLogic, Assembly-CSharp
         m_MethodName: AddFlower
         m_Mode: 1
         m_Arguments:
@@ -12803,8 +12839,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1450975157}
-        m_TargetAssemblyTypeName: Shop_UI, Assembly-CSharp
+      - m_Target: {fileID: 1450975158}
+        m_TargetAssemblyTypeName: Shop.Shop_UI, Assembly-CSharp
         m_MethodName: ToggleShop
         m_Mode: 1
         m_Arguments:
