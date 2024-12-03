@@ -8,16 +8,37 @@ namespace Shop
     public class ShopLogic : MonoBehaviour
     {
         public int quantity;
+        public ItemType itemType;
         public TextMeshProUGUI quantityText;
         public int totalAmount;
         public TextMeshProUGUI totalAmountText;
         public GameObject ShowDaisy;
         public GameObject ShowRose;
         Currency currencyScript;
-        // Start is called before the first frame update
-        void Start()
+        PlayerScript playerScript;
+
+        void Awake()
         {
             currencyScript = GameObject.FindGameObjectWithTag("Currency").GetComponent<Currency>();
+            playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        }
+        void Start()
+        {
+            itemType = ItemType.DAISY_SEED;
+            quantity = 0;
+        }
+
+        private ItemType getSeedType()
+        {
+            if (ShowDaisy.activeSelf)
+            {
+                return ItemType.DAISY_SEED;
+            }
+            else if (ShowRose.activeSelf)
+            {
+                return ItemType.ROSE_SEED;
+            }
+            return ItemType.NONE;
         }
 
         // Buy Section
@@ -42,16 +63,7 @@ namespace Shop
         }
         public void UpdateTotal()
         {
-            Item.ItemType itemType = Item.ItemType.NONE;
-            if (ShowDaisy.activeSelf)
-            {
-                itemType = Item.ItemType.DAISY_SEED;
-            }
-            else if (ShowRose.activeSelf)
-            {
-                itemType = Item.ItemType.ROSE_SEED;
-
-            }
+            itemType = getSeedType();
             totalAmount = quantity * Item.GetCost(itemType);
             totalAmountText.text = "Total: $" + totalAmount.ToString();
         }
@@ -61,6 +73,7 @@ namespace Shop
             if (currencyScript.money >= totalAmount)
             {
                 currencyScript.SubtractMoney(totalAmount);
+                playerScript.playerInventory.Add(itemType, quantity);
             }
             else
             {

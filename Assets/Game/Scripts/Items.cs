@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemType
+{
+    NONE, DAISY_SEED, ROSE_SEED
+}
+
 public class Item
 {
-    public enum ItemType
-    {
-        NONE, DAISY_SEED, ROSE_SEED
-    }
+    public ItemType type;
     public static int GetCost(ItemType itemType)
     {
         switch (itemType)
@@ -19,3 +21,5 @@ public class Item
     }
 
 }
+
+

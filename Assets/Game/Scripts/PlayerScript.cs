@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    // public Inventory inventory;
-    public GameObject currency;
+    public Inventory playerInventory;
+    public Currency currencyScript;
 
-    // public void Awake()
-    // {
-    //     inventory = new Inventory(9);
-    //     money = new Currency();
-    // }
+
+    public void Awake()
+    {
+        playerInventory = new Inventory(9);
+        currencyScript = GameObject.FindGameObjectWithTag("Currency").GetComponent<Currency>();
+    }
     public void Start()
     {
 
